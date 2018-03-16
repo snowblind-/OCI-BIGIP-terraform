@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo "################### $${SCRIPT} starts ###############################"
+
+########## update all #################
+sudo yum update -q -y
+
+########## install httpd ##############
+sudo touch /home/opc/INSTALLHTTPD
+sudo yum install httpd httpd-tools -q -y
+sudo touch /home/opc/STARTHTTPD
+sudo /bin/systemctl start httpd.service
+sudo touch /home/opc/STARTEDHTTPD
+########## allow http traffic #########
+sudo /bin/systemctl stop firewalld.service
+sudo /bin/systemctl disable firewalld
+########## create simple webpage ##########
+sudo echo $HOSTNAME >> /var/www/html/index.html
