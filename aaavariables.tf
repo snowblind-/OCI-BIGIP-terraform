@@ -26,7 +26,7 @@ variable "region" {
 
 // F5 BIGIP Admin Password
 variable "adminpwd" {
-  default = "p@55w3rD123"
+  default = "changeme"
 }
 
 // F5 BIGIP Licenses
